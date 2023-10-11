@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         // printing their output to the Log, which is visible in the LogCat:
         // eg. Log.d("function output", getTestDataArray().toString())
 
+        Log.d("function output", getTestDataArray().toString())
     }
 
 
@@ -44,15 +45,21 @@ class MainActivity : AppCompatActivity() {
 
         return avg < median
     }*/
-    private fun averageLessThanMedian(listOfNumbers: List<Double>): Boolean =
-        listOfNumbers.average().let { avg ->
-            listOfNumbers.sorted().let { sortedList ->
-                if (sortedList.size % 2 == 0)
-                    (sortedList[sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2
+    private fun averageLessThanMedian(listOfNumbers: List<Double>): Boolean = listOfNumbers.average() < listOfNumbers.let {
+        if (it.size % 2 == 0)
+                    (it[it.size / 2] + it[(it.size - 1) / 2]) / 2
                 else
-                    sortedList[sortedList.size / 2]
-            } > avg
-        }
+                    it[it.size / 2]
+    }
+//    private fun averageLessThanMedian(listOfNumbers: List<Double>): Boolean =
+//        listOfNumbers.average().let { avg ->
+//            listOfNumbers.sorted().let { sortedList ->
+//                if (sortedList.size % 2 == 0)
+//                    (sortedList[sortedList.size / 2] + sortedList[(sortedList.size - 1) / 2]) / 2
+//                else
+//                    sortedList[sortedList.size / 2]
+//            } > avg
+//        }
 
     // Create a view from an item in a collection, but recycle if possible (similar to an AdapterView's adapter)
     /*private fun getView(position: Int, recycledView: View?, collection: List<Int>, context: Context): View {
